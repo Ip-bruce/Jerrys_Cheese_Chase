@@ -4,30 +4,29 @@ class MainScene extends Phaser.Scene {
     {
         super("fase1");
     }
-    preload() {
+    preload() 
+    {
         this.load.image("coin","assets/coin.png");
         this.load.image("player","assets/player.png");
+        this.load.image("trap","assets/ratoeira.png");
     }
-    create() 
+
+    create()
     {
-      
-      this.player = this.physics.add.sprite(100, 100, "player");
-      this.coin = this.physics.add.sprite(300, 300, "coin");
+        this.player = this.physics.add.sprite(100,100,"player");
+        this.coin = this.physics.add.sprite(300,300,"coin");
+        this.coin2 = this.physics.add.sprite(500,700,"coin");
+        this.trap = this.physics.add.sprite(200,300,"trap");
+        this.score = 0;
 
-      this.score = 0;
+        let style = {font: "20px Arial", fill: "#fff"};
 
-      // The style of the text 
-      // A lot of options are available, these are the most important ones
-      let style = { font: "20px Arial", fill: "#fff" };
 
-      // Display the score in the top left corner
-      // Parameters: x position, y position, text, style
-      this.scoreText = this.add.text(20, 20, "score: " + this.score, style);
-      
-      //Character Movement
-      this.arrow = this.input.keyboard.createCursorKeys();
-      
+        this.scoreText = this.add.text(20,20,"score: " + this.score, style );
+
+        this.arrow = this.input.keyboard.createCursorKeys();
     }
+
     update() 
     {
       // This method is called 60 times per second after create() 
@@ -55,17 +54,23 @@ class MainScene extends Phaser.Scene {
             // Call the new hit() method
             this.hit();
         }
-        if(this.score == 10)
-        {
-            this.scene.start("winscene");
+        if (this.physics.overlap(this.player, this.coin2)) {
+            // Call the new hit() method
+            this.hit();
+        }
+        if (this.physics.overlap(this.player, this.trap)) {
+            // Call the new hit() method
+            this.die();
         }
 
     }
     hit() 
     {
+            this.coin.destroy();
+        
         // Change the position x and y of the coin randomly
-        this.coin.x = Phaser.Math.Between(100, 600);
-        this.coin.y = Phaser.Math.Between(100, 300);
+        // this.coin.x = Phaser.Math.Between(100, 600);
+        // this.coin.y = Phaser.Math.Between(100, 300);
     
         // Increment the score by 10
         this.score += 10;
@@ -83,4 +88,27 @@ class MainScene extends Phaser.Scene {
         });
     }
 
-  }
+    die()
+    {
+        // // Increment the score by 10
+        // this.score -= 10;
+    
+        // // Display the updated score on the screen
+        // this.scoreText.setText("score: " + this.score);
+
+        // Create a new tween 
+        this.tweens.add({
+            targets: this.player, // on the player 
+            duration: 500, // for 200ms 
+            scaleX: 1.5, // that scale vertically by 20% 
+            scaleY: 1.5, // and scale horizontally by 20% 
+            color: '#c61a09',
+            yoyo: true, // at the end, go back to original scale 
+        });
+
+        this.scene.start("MainMenu");
+    }
+
+
+
+}
