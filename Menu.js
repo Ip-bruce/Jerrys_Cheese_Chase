@@ -17,7 +17,7 @@ class Menu extends Phaser.Scene {
   
       let playbtn = this.add.image(400,500,"play");
       playbtn.setInteractive();
-      playbtn.on("pointerdown",() =>  this.scene.start("fase1")); //TODO: Change the scene name with the "Cutscene" Scene
+      playbtn.on("pointerdown",() =>  this.scene.start("HistoryScene1")); 
     
       let tutorialbtn = this.add.image(150,500,"tutorial");
       tutorialbtn.setInteractive();
