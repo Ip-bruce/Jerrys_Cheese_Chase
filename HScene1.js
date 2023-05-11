@@ -11,6 +11,8 @@ class HScene1 extends Phaser.Scene{
 
     create()
     {
-        this.add.image("ratoeira");
+        this.add.image(400,400,"ratoeira");
+
+
     }
 }

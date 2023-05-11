@@ -10,7 +10,6 @@ class Tutorial extends Phaser.Scene {
 
    create() 
    {
-     let creditbtn = this.add.image(650,500,"tutorial");
 
      
 
