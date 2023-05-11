@@ -7,7 +7,7 @@ class Menu extends Phaser.Scene {
     {
       this.load.image("menu","assets/menu.png");
       this.load.image("play","assets/PLAY.png");
-      this.load.image("config","assets/CONFIG.png");
+      this.load.image("creditbutton","assets/credit.png");
       this.load.image("tutorial","assets/tutorial.png");
     }
     
@@ -19,13 +19,13 @@ class Menu extends Phaser.Scene {
       playbtn.setInteractive();
       playbtn.on("pointerdown",() =>  this.scene.start("fase1")); //TODO: Change the scene name with the "Cutscene" Scene
     
-      let configbtn = this.add.image(150,500,"config");
-      configbtn.setInteractive();
-      configbtn.on("pointerdown",() =>  this.scene.start("Tutorial"));
+      let tutorialbtn = this.add.image(150,500,"tutorial");
+      tutorialbtn.setInteractive();
+      tutorialbtn.on("pointerdown",() =>  this.scene.start("Tutorial"));
     
-      let creditbtn = this.add.image(650,500,"tutorial");
+      let creditbtn = this.add.image(650,500,"creditbutton");
       creditbtn.setInteractive();
-      creditbtn.on("pointerdown",() =>  this.scene.start("tutorial"));      
+      creditbtn.on("pointerdown",() =>  this.scene.start("creditScene"));      
     }
    
     
