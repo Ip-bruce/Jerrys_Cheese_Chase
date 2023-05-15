@@ -5,13 +5,13 @@ class Tutorial extends Phaser.Scene {
 
    preload() 
    {
-       this.load.image("tutorial","assets/tutorial.png");
+       this.load.image("tu","assets/play.png");
    }
 
    create() 
    {
 
-     
+     this.add.image(20,20,"tu");
 
    }
 

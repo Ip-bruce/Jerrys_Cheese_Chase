@@ -6,7 +6,7 @@ class Menu extends Phaser.Scene {
     preload()
     {
       this.load.image("menu","assets/menu.png");
-      this.load.image("play","assets/PLAY.png");
+      this.load.image("play","assets/play.png");
       this.load.image("creditbutton","assets/credit.png");
       this.load.image("tutorial","assets/tutorial.png");
     }
@@ -21,7 +21,7 @@ class Menu extends Phaser.Scene {
     
       let tutorialbtn = this.add.image(150,500,"tutorial");
       tutorialbtn.setInteractive();
-      tutorialbtn.on("pointerdown",() =>  this.scene.start("Tutorial"));
+      tutorialbtn.on("pointerdown",() =>  this.scene.start("tutorial"));
     
       let creditbtn = this.add.image(650,500,"creditbutton");
       creditbtn.setInteractive();

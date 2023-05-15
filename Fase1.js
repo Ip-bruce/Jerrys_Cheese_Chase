@@ -1,22 +1,29 @@
-class MainScene extends Phaser.Scene {
+class Fase1 extends Phaser.Scene {
     // The three methods currently empty
     constructor()
     {
-        super("fase1");
+        super("level1");
     }
     preload() 
     {
-        this.load.image("coin","assets/coin.png");
+        this.load.image("cheese","assets/coin.png");
         this.load.image("player","assets/player.png");
         this.load.image("trap","assets/ratoeira.png");
     }
 
     create()
     {
-        this.player = this.physics.add.sprite(100,100,"player");
-        this.coin = this.physics.add.sprite(300,300,"coin");
-        this.coin2 = this.physics.add.sprite(500,700,"coin");
-        this.trap = this.physics.add.sprite(200,300,"trap");
+        this.player = this.physics.add.sprite(110,350,"player");
+        //Cheese - Queijo ------------------------------------------
+        this.cheese = this.physics.add.sprite(750,350,"cheese");
+        this.cheese2 = this.physics.add.sprite(1350,350,"cheese");
+        this.cheese3 = this.physics.add.sprite(300,350,"cheese");
+
+        //Traps - Ratoeiras -------------------------------------------
+        this.trap = this.physics.add.sprite(500,350,"trap");
+        this.trap2 = this.physics.add.sprite(1050,350,"trap");
+
+
         this.score = 0;
 
         let style = {font: "20px Arial", fill: "#fff"};
@@ -49,24 +56,35 @@ class MainScene extends Phaser.Scene {
             this.player.y -= 3;
         } 
 
-        // If the player is overlapping with the coin
-        if (this.physics.overlap(this.player, this.coin)) {
+        // If the player is overlapping with the cheese - Se o jogador está colidindo com o Queijo
+        if (this.physics.overlap(this.player, this.cheese)) {
             // Call the new hit() method
-            this.hit();
+            this.hit(this.cheese);
         }
-        if (this.physics.overlap(this.player, this.coin2)) {
+        if (this.physics.overlap(this.player, this.cheese2)) {
             // Call the new hit() method
-            this.hit();
+            this.hit(this.cheese2);
         }
+        if (this.physics.overlap(this.player, this.cheese3)) {
+            // Call the new hit() method
+            this.hit(this.cheese3);
+        }
+
+        //When the player overlaps with the trap - Quando o jogador colide com a ratoeira
         if (this.physics.overlap(this.player, this.trap)) {
-            // Call the new hit() method
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap2)) {
             this.die();
         }
 
+        //GAME MANAGER - 
+        
+       
     }
-    hit() 
+    hit(cheese) 
     {
-            this.coin.destroy();
+            cheese.destroy();
         
         // Change the position x and y of the coin randomly
         // this.coin.x = Phaser.Math.Between(100, 600);
