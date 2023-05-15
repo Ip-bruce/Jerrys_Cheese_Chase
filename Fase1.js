@@ -79,19 +79,18 @@ class Fase1 extends Phaser.Scene {
         }
 
         //GAME MANAGER - 
-        
-       
+        this.checkScore(this.score);
     }
     hit(cheese) 
     {
-            cheese.destroy();
+        cheese.destroy();
         
         // Change the position x and y of the coin randomly
         // this.coin.x = Phaser.Math.Between(100, 600);
         // this.coin.y = Phaser.Math.Between(100, 300);
     
         // Increment the score by 10
-        this.score += 10;
+        this.score += 1;
     
         // Display the updated score on the screen
         this.scoreText.setText("score: " + this.score);
@@ -104,6 +103,8 @@ class Fase1 extends Phaser.Scene {
             scaleY: 1.2, // and scale horizontally by 20% 
             yoyo: true, // at the end, go back to original scale 
         });
+
+
     }
 
     die()
@@ -127,6 +128,13 @@ class Fase1 extends Phaser.Scene {
         this.scene.start("MainMenu");
     }
 
-
+    checkScore(score)
+    {
+        if(score == 3)
+        {
+            this.scene.start("MainMenu");
+            
+        }
+    }
 
 }
