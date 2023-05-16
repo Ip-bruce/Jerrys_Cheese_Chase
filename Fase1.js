@@ -9,6 +9,7 @@ class Fase1 extends Phaser.Scene {
         this.load.image("cheese","assets/coin.png");
         this.load.image("player","assets/player.png");
         this.load.image("trap","assets/ratoeira.png");
+        this.load.audio("colect",["assets/colectSound.mp3"]);
     }
 
     create()
@@ -22,6 +23,8 @@ class Fase1 extends Phaser.Scene {
         //Traps - Ratoeiras -------------------------------------------
         this.trap = this.physics.add.sprite(500,350,"trap");
         this.trap2 = this.physics.add.sprite(1050,350,"trap");
+        //Audio
+        this.ColectSound = this.sound.add("colect");
 
 
         this.score = 0;
@@ -60,14 +63,17 @@ class Fase1 extends Phaser.Scene {
         if (this.physics.overlap(this.player, this.cheese)) {
             // Call the new hit() method
             this.hit(this.cheese);
+            this.ColectSound.play("colect");
         }
         if (this.physics.overlap(this.player, this.cheese2)) {
             // Call the new hit() method
             this.hit(this.cheese2);
+            this.ColectSound.play("colect");
         }
         if (this.physics.overlap(this.player, this.cheese3)) {
             // Call the new hit() method
             this.hit(this.cheese3);
+            this.ColectSound.play("colect");
         }
 
         //When the player overlaps with the trap - Quando o jogador colide com a ratoeira
@@ -83,6 +89,7 @@ class Fase1 extends Phaser.Scene {
     }
     hit(cheese) 
     {
+        
         cheese.destroy();
         
         // Change the position x and y of the coin randomly
