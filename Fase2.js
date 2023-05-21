@@ -1,9 +1,9 @@
-class Fase1 extends Phaser.Scene {
-    // The three methods currently empty
-    constructor()
-    {
-        super("level1");
+
+class Fase2 extends Phaser.Scene {
+    constructor () {
+        super("level2");
     }
+
     preload() 
     {
         this.load.image("cheese","assets/coin.png");
@@ -16,13 +16,16 @@ class Fase1 extends Phaser.Scene {
     {
         this.player = this.physics.add.sprite(110,350,"player");
         //Cheese - Queijo ------------------------------------------
-        this.cheese = this.physics.add.sprite(750,350,"cheese");
+        this.cheese = this.physics.add.sprite(850,350,"cheese");
         this.cheese2 = this.physics.add.sprite(1350,350,"cheese");
         this.cheese3 = this.physics.add.sprite(300,350,"cheese");
 
         //Traps - Ratoeiras -------------------------------------------
-        this.trap = this.physics.add.sprite(500,350,"trap");
+        this.trap = this.physics.add.sprite(500,150,"trap");
         this.trap2 = this.physics.add.sprite(1050,350,"trap");
+        this.trap3 = this.physics.add.sprite(700,370,"trap");
+        this.trap4 = this.physics.add.sprite(1325,500,"trap");
+        this.trap5 = this.physics.add.sprite(1355,250,"trap");
         //Audio
         this.ColectSound = this.sound.add("colect");
 
@@ -41,7 +44,6 @@ class Fase1 extends Phaser.Scene {
     {
       // This method is called 60 times per second after create() 
       // It will handle all the game"s logic, like movements
-
       //Movement
       // Handle horizontal movements
         if (this.arrow.right.isDown) {
@@ -81,6 +83,15 @@ class Fase1 extends Phaser.Scene {
             this.die();
         }
         if (this.physics.overlap(this.player, this.trap2)) {
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap3)) {
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap4)) {
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap5)) {
             this.die();
         }
 
@@ -139,8 +150,7 @@ class Fase1 extends Phaser.Scene {
     {
         if(score == 3)
         {
-            this.scene.start("level2");
-            
+            this.scene.start("level3");     
         }
     }
 

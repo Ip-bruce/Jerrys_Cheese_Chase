@@ -1,9 +1,10 @@
-class Fase1 extends Phaser.Scene {
-    // The three methods currently empty
+class Fase3 extends Phaser.Scene{
     constructor()
     {
-        super("level1");
+        super("level3");
     }
+
+
     preload() 
     {
         this.load.image("cheese","assets/coin.png");
@@ -16,17 +17,24 @@ class Fase1 extends Phaser.Scene {
     {
         this.player = this.physics.add.sprite(110,350,"player");
         //Cheese - Queijo ------------------------------------------
-        this.cheese = this.physics.add.sprite(750,350,"cheese");
+        this.cheese = this.physics.add.sprite(850,350,"cheese");
         this.cheese2 = this.physics.add.sprite(1350,350,"cheese");
         this.cheese3 = this.physics.add.sprite(300,350,"cheese");
+        this.cheese4 = this.physics.add.sprite(500,600,"cheese");
 
         //Traps - Ratoeiras -------------------------------------------
-        this.trap = this.physics.add.sprite(500,350,"trap");
+        this.trap = this.physics.add.sprite(500,150,"trap");
         this.trap2 = this.physics.add.sprite(1050,350,"trap");
+        this.trap3 = this.physics.add.sprite(700,370,"trap");
+        this.trap4 = this.physics.add.sprite(1250,500,"trap");
+        this.trap5 = this.physics.add.sprite(1355,250,"trap");
+        this.trap6 = this.physics.add.sprite(1525,475,"trap");
+        this.trap7= this.physics.add.sprite(500,475,"trap");
+
         //Audio
         this.ColectSound = this.sound.add("colect");
 
-
+        //Score:
         this.score = 0;
 
         let style = {font: "20px Arial", fill: "#fff"};
@@ -41,7 +49,6 @@ class Fase1 extends Phaser.Scene {
     {
       // This method is called 60 times per second after create() 
       // It will handle all the game"s logic, like movements
-
       //Movement
       // Handle horizontal movements
         if (this.arrow.right.isDown) {
@@ -75,6 +82,11 @@ class Fase1 extends Phaser.Scene {
             this.hit(this.cheese3);
             this.ColectSound.play("colect");
         }
+        if (this.physics.overlap(this.player, this.cheese4)) {
+            // Call the new hit() method
+            this.hit(this.cheese4);
+            this.ColectSound.play("colect");
+        }
 
         //When the player overlaps with the trap - Quando o jogador colide com a ratoeira
         if (this.physics.overlap(this.player, this.trap)) {
@@ -83,13 +95,31 @@ class Fase1 extends Phaser.Scene {
         if (this.physics.overlap(this.player, this.trap2)) {
             this.die();
         }
+        if (this.physics.overlap(this.player, this.trap3)) {
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap4)) {
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap5)) {
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap6)) {
+            this.die();
+        }
+        if (this.physics.overlap(this.player, this.trap7)) {
+            this.die();
+        }
+
+
+
+
 
         //GAME MANAGER - 
         this.checkScore(this.score);
     }
     hit(cheese) 
     {
-        
         cheese.destroy();
         
         // Change the position x and y of the coin randomly
@@ -137,11 +167,11 @@ class Fase1 extends Phaser.Scene {
 
     checkScore(score)
     {
-        if(score == 3)
+        if(score == 4)
         {
-            this.scene.start("level2");
-            
+            this.scene.start("MainMenu");     
         }
     }
+
 
 }
