@@ -23,13 +23,48 @@ class Fase3 extends Phaser.Scene{
         this.cheese4 = this.physics.add.sprite(500,600,"cheese");
 
         //Traps - Ratoeiras -------------------------------------------
-        this.trap = this.physics.add.sprite(500,150,"trap");
-        this.trap2 = this.physics.add.sprite(1050,350,"trap");
-        this.trap3 = this.physics.add.sprite(700,370,"trap");
-        this.trap4 = this.physics.add.sprite(1250,500,"trap");
-        this.trap5 = this.physics.add.sprite(1355,250,"trap");
-        this.trap6 = this.physics.add.sprite(1525,475,"trap");
-        this.trap7= this.physics.add.sprite(500,475,"trap");
+        this.traps_position = [
+            {
+                positionx:500,
+                positiony:150,
+            },
+            {
+                positionx:1050,
+                positiony:350,
+            },
+            {
+                positionx:700,
+                positiony:370,
+            },
+            {
+                positionx:1250,
+                positiony:500,
+            },
+            {
+                positionx:1355,
+                positiony:250,
+            },
+            {
+                positionx:1525,
+                positiony:475,
+            },
+            {
+                positionx:500,
+                positiony:475,
+            }
+        ]
+
+        this.traps = []
+        for(const trap of this.traps_position){
+            this.traps.push(this.physics.add.sprite(trap.positionx, trap.positiony, "trap"));
+        }
+        // this.trap = this.physics.add.sprite(500,150,"trap");
+        // this.trap2 = this.physics.add.sprite(1050,350,"trap");
+        // this.trap3 = this.physics.add.sprite(700,370,"trap");
+        // this.trap4 = this.physics.add.sprite(1250,500,"trap");
+        // this.trap5 = this.physics.add.sprite(1355,250,"trap");
+        // this.trap6 = this.physics.add.sprite(1525,475,"trap");
+        // this.trap7= this.physics.add.sprite(500,475,"trap");
 
         //Audio
         this.ColectSound = this.sound.add("colect");
@@ -88,28 +123,33 @@ class Fase3 extends Phaser.Scene{
             this.ColectSound.play("colect");
         }
 
-        //When the player overlaps with the trap - Quando o jogador colide com a ratoeira
-        if (this.physics.overlap(this.player, this.trap)) {
-            this.die();
+        for(const trap of this.traps){
+            if (this.physics.overlap(this.player, trap)) {
+                this.die();
+            }
         }
-        if (this.physics.overlap(this.player, this.trap2)) {
-            this.die();
-        }
-        if (this.physics.overlap(this.player, this.trap3)) {
-            this.die();
-        }
-        if (this.physics.overlap(this.player, this.trap4)) {
-            this.die();
-        }
-        if (this.physics.overlap(this.player, this.trap5)) {
-            this.die();
-        }
-        if (this.physics.overlap(this.player, this.trap6)) {
-            this.die();
-        }
-        if (this.physics.overlap(this.player, this.trap7)) {
-            this.die();
-        }
+        // //When the player overlaps with the trap - Quando o jogador colide com a ratoeira
+        // if (this.physics.overlap(this.player, this.trap)) {
+        //     this.die();
+        // }
+        // if (this.physics.overlap(this.player, this.trap2)) {
+        //     this.die();
+        // }
+        // if (this.physics.overlap(this.player, this.trap3)) {
+        //     this.die();
+        // }
+        // if (this.physics.overlap(this.player, this.trap4)) {
+        //     this.die();
+        // }
+        // if (this.physics.overlap(this.player, this.trap5)) {
+        //     this.die();
+        // }
+        // if (this.physics.overlap(this.player, this.trap6)) {
+        //     this.die();
+        // }
+        // if (this.physics.overlap(this.player, this.trap7)) {
+        //     this.die();
+        // }
 
 
 
