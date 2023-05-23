@@ -1,7 +1,7 @@
-class Fase3 extends Phaser.Scene{
+class Fase4 extends Phaser.Scene{
     constructor()
     {
-        super("level3");
+        super("level4");
     }
 
 
@@ -209,7 +209,7 @@ class Fase3 extends Phaser.Scene{
     {
         if(score == 4)
         {
-            this.scene.start("level4");     
+            this.scene.start("WinScene");     
         }
     }
 
