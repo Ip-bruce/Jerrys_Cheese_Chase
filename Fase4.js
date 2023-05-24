@@ -27,16 +27,20 @@ class Fase4 extends Phaser.Scene{
         //Traps - Ratoeiras -------------------------------------------
         this.traps_position = [
             {
-                positionx:500,
-                positiony:150,
+                positionx:415,
+                positiony:200,
             },
             {
-                positionx:1050,
+                positionx:985,
                 positiony:350,
             },
             {
-                positionx:700,
-                positiony:370,
+                positionx:1116,
+                positiony:350,
+            },
+            {
+                positionx:740,
+                positiony:350,
             },
             {
                 positionx:1250,
@@ -51,8 +55,8 @@ class Fase4 extends Phaser.Scene{
                 positiony:475,
             },
             {
-                positionx:500,
-                positiony:475,
+                positionx:350,
+                positiony:550,
             }
         ]
 

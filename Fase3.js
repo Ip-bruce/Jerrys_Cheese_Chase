@@ -7,7 +7,7 @@ class Fase3 extends Phaser.Scene{
 
     preload() 
     {
-        this.load.image("bkg","assets/Cen3.png");
+        this.load.image("bkg3","assets/Cen3.png");
         this.load.image("cheese","assets/Cheese.png");
         this.load.image("player","assets/player.png");
         this.load.image("trap","assets/RatTrap.png");
@@ -16,7 +16,7 @@ class Fase3 extends Phaser.Scene{
 
     create()
     {
-        this.add.image(930,360,"bkg");
+        this.add.image(930,360,"bkg3");
         this.player = this.physics.add.sprite(110,350,"player");
         //Cheese - Queijo ------------------------------------------
         this.cheese = this.physics.add.sprite(850,350,"cheese");
