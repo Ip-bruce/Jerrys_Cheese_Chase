@@ -5,13 +5,19 @@ class Tutorial extends Phaser.Scene {
 
    preload() 
    {
-       this.load.image("tu","assets/play.png");
+      this.load.image("back","assets/Voltar.png");
    }
 
    create() 
    {
+      let style = {font: "20px Arial", fill: "#fff"};
 
-     this.add.image(20,20,"tu");
+      let text = this.add.text(800,150,"AAAAAAAAAAAAAAAAAAAAAAAAAAAA",style);
+
+      let backbtn = this.add.image(800,350,"back");
+      backbtn.SetInteractive();
+      backbtn.on("pointerdown",() => this.scene.start("MainMenu"));
+
 
    }
 

@@ -7,11 +7,17 @@
 
         preload()
         {
-            this.load.image("credit","assets/credit.png");
+            this.load.image("bkg","assets/Créditos.png");
+            this.load.image("backbtn","assets/Voltar.png");
+
         }
 
         create()
         {
-            this.add.image(400,400,"credit");
+            this.add.image(930,360,"bkg");
+            let backbtn = this.add.image(1500,600,"backbtn");
+            backbtn.setInteractive();
+            backbtn.on("pointerdown",() =>  this.scene.start("MainMenu")); 
+
         }
     }
