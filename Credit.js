@@ -7,7 +7,7 @@
 
         preload()
         {
-            this.load.image("bkgCredit","assets/Créditos.png");
+            this.load.image("bkgCredit","assets/CréditoBG.png");
             this.load.image("backbtn","assets/Voltar.png");
 
         }
