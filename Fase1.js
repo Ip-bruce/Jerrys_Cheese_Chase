@@ -8,7 +8,7 @@ class Fase1 extends Phaser.Scene {
     {
         this.load.image("bkg1","assets/Cen1.png");
         this.load.image("cheese","assets/Cheese.png");
-        this.load.image("player","assets/player.png");
+        this.load.image("player","assets/Rato.png");
         this.load.image("trap","assets/RatTrap.png");
         this.load.audio("colect",["assets/colectSound.mp3"]);
     }
