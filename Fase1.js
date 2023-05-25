@@ -141,7 +141,7 @@ class Fase1 extends Phaser.Scene {
     {
         if(score == 3)
         {
-            this.scene.start("WinScene");
+            this.scene.start("level2");
             
         }
     }
