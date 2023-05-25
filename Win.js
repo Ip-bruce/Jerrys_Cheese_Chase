@@ -6,12 +6,11 @@ class Win extends Phaser.Scene{
 
     preload()
     {
-        this.load.image("conseguiubkg","Conseguiu.png");
+        this.preload.image("fundo","assets/Conseguiu.png");
     }
 
     create()
     {
-        this.add.image(930,360,"conseguiubkg");
-
+        this.add.image(930,360,"fundo");
     }
 }
